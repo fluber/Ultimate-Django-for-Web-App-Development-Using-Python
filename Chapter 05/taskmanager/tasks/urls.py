@@ -1,4 +1,4 @@
-from django.urls import path, register_converter
+from django.urls import path, register_converter, re_path
 from django.views.generic import TemplateView
 
 from . import converters
@@ -31,7 +31,7 @@ urlpatterns = [
     path(
         "tasks/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"
     ),  # DELETE
-    path("tasks/<yyyymmdd:date>/", task_by_date, name="task-get-by-date"),
+    re_path(r'^tasks/(?P<by_date>\d{4}-\d{2}-\d{2})/$', task_by_date, name='task-get-by-date'),
     path(
         "tasks/sprint/add_task/<int:pk>/",
         create_task_on_sprint,
