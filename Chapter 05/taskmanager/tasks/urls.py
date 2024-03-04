@@ -31,7 +31,7 @@ urlpatterns = [
     path(
         "tasks/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"
     ),  # DELETE
-    path("tasks/<yyyymmdd:date>/", task_by_date, name="task-get-by-date"),
+    path("tasks/<yyyymmdd:by_date>/", task_by_date, name="task-get-by-date"),
     path(
         "tasks/sprint/add_task/<int:pk>/",
         create_task_on_sprint,
